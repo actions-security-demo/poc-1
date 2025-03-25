@@ -2,6 +2,9 @@ name: Deploy to AWS
 on: 
   workflow_dispatch:
   
+permissions:
+  contents: read
+
 jobs:
   publish:
     name: Deploy to AWS
@@ -9,10 +12,15 @@ jobs:
     permissions:
       contents: read      
     steps:  
+        - name: Harden the runner (Audit all outbound calls)
+          uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+          with:
+            egress-policy: audit
+
         - name: Checkout
-          uses: actions/checkout@v2    
+          uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0    
         - name: Retry Logic
-          uses: nick-fields/retry@v3
+          uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
           with:
             timeout_minutes: 10
             max_attempts: 3
