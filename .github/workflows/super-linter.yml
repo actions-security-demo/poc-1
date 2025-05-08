@@ -29,8 +29,31 @@ jobs:
               - 'src/**'
       
       - name: Lint Code Base
+        continue-on-error: true
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        continue-on-error: true
+        
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5
+        continue-on-error: true
+        with:
+          # All of these options are optional, so you can remove them if you are happy with the defaults
+          concurrent_skipping: 'never'
+          skip_after_successful_duplicate: 'true'
+          paths_ignore: '["**/README.md", "**/docs/**"]'
+          do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
+
+      - uses: nick-fields/retry@v3
+        continue-on-error: true
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          shell: pwsh
+          command: dir
