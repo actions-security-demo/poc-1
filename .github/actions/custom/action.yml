@@ -10,7 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Harden Runner
-      if: ${{ false }}
+      if: ${{ github.ref == 'refs/heads/xxxx' }}
       uses: step-security/harden-runner@v2
       with:
         egress-policy: audit
