@@ -1,0 +1,21 @@
+name: "My Composite Action"
+description: "Runs Harden Runner conditionally"
+inputs:
+  github-token:
+    description: 'Github token to use to authenticate downloads'
+    required: false
+    default: ${{ github.token }}
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Harden Runner
+      if: ${{ !(github.event.repository.custom_properties.telemetry_status == 'disabled'
+              || runner.os != 'Linux'
+              || runner.environment != 'github-hosted') }}
+      uses: step-security/harden-runner@v2
+      with:
+        egress-policy: block
+
+    - name: Another Action
+      uses: actions/checkout@v4
