@@ -10,12 +10,10 @@ runs:
   using: "composite"
   steps:
     - name: Harden Runner
-      if: ${{ !(github.event.repository.custom_properties.telemetry_status == 'disabled'
-              || runner.os != 'Linux'
-              || runner.environment != 'github-hosted') }}
+      if: false
       uses: step-security/harden-runner@v2
       with:
-        egress-policy: block
+        egress-policy: audit
 
     - name: Another Action
       uses: actions/checkout@v4
