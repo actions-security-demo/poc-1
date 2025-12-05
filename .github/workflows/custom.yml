@@ -16,7 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions-security-demo/poc-1/.github/actions/custom@main
+      - uses: step-security/harden-runner@feature/custom-property-skip
+        with:
+          egress-policy: audit
+          skip-on-custom-property: "telemetry_status=disabled"
                 
       - run: echo ${{ github.event.repository.custom_properties.telemetry_status }}
       - uses: amannn/action-semantic-pull-request@v5
