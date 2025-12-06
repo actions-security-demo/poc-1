@@ -1,4 +1,4 @@
-# removed custom property
+# removed custom property1
 name: "Lint PR"
 
 on:
