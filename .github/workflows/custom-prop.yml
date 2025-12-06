@@ -1,0 +1,22 @@
+name: "custom property"
+
+on:
+  workflow_dispatch:
+  
+
+permissions:
+  pull-requests: read
+
+jobs:
+  main:
+    name: custom prop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: step-security/harden-runner@feature/custom-property-skip
+        with:
+          egress-policy: audit
+          
+                
+      - run: echo ${{ github.event.repository.custom_properties.skip-harden-runner }}
+     
