@@ -16,6 +16,9 @@ jobs:
       - uses: step-security/harden-runner@feature/custom-property-skip
         with:
           egress-policy: audit
+      - uses: step-security/harden-runner@feature/custom-property-skip
+        with:
+          egress-policy: audit
           
                 
       - run: echo ${{ github.event.repository.custom_properties.skip-harden-runner }}
