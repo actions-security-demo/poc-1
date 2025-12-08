@@ -1,0 +1,28 @@
+# removed custom property1
+name: "Lint PR"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+permissions:
+  pull-requests: read
+
+jobs:
+  main:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: step-security/harden-runner@feature/custom-property-skip
+        with:
+          egress-policy: audit
+          
+                
+      - run: echo ${{ github.event.repository.custom_properties.telemetry_status }}
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
