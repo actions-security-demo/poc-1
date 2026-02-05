@@ -10,8 +10,13 @@ jobs:
         permissions:
             issues: write
         steps:
+            - name: Harden the runner (Audit all outbound calls)
+              uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
+              with:
+                egress-policy: audit
+
             - name: 'Auto-assign issue'
-              uses: pozil/auto-assign-issue@v1
+              uses: pozil/auto-assign-issue@e0a56afd8846954587b00fff254caf1ec918554e # v1
               with:
                   assignees: ashishkurmi
                   numOfAssignee: 1

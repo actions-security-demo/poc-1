@@ -19,6 +19,11 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: Wandalen/wretry.action@master
+    - name: Harden the runner (Audit all outbound calls)
+      uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
+      with:
+        egress-policy: audit
+
+    - uses: Wandalen/wretry.action@e94c43bf2e865e7dbbd90b0c1061053f5888932a # master
       with:
         action: actions/stale@v5

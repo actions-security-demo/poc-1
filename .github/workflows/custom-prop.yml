@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: step-security/harden-runner@feature/custom-property-skip
+      - uses: step-security/harden-runner@c51e8eeb6c4fdcd08f65e43a051dacdbfaa69702 # feature/custom-property-skip
         with:
           egress-policy: audit
-      - uses: step-security/harden-runner@feature/custom-property-skip
+      - uses: step-security/harden-runner@c51e8eeb6c4fdcd08f65e43a051dacdbfaa69702 # feature/custom-property-skip
         with:
           egress-policy: audit
           
