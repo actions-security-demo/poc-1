@@ -4,12 +4,12 @@ on:
 jobs:
   build:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     
       # Checkout code
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@v2
+        uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
         with:
           egress-policy: audit
 
@@ -23,6 +23,6 @@ jobs:
         run: "curl attacker.com  --connect-timeout 5  || true"
 
       - name: 1 Docker Action ashishkurmi/hello-action
-        uses: ashishkurmi/hello-action@main
+        uses: ashishkurmi/hello-action@c5327f7d9d31e29e58e788cb3c2727f773b3d0c4 # main
         env:
           SLEEPINSECONDS: 5
