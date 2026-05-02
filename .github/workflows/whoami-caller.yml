@@ -1,8 +1,0 @@
-name: Whoami caller (POC)
-
-on:
-  workflow_dispatch:
-
-jobs:
-  call-reusable:
-    uses: actions-security-demo/reusable-workflows/.github/workflows/whoami-reusable.yml@main
