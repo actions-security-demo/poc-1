@@ -1,0 +1,10 @@
+asyncio==3.4.3
+certifi==2025.4.26
+charset-normalizer==3.4.2
+durabletask==1.4.3
+grpcio==1.72.1
+idna==3.10
+packaging==25.0
+protobuf==6.31.0
+requests==2.32.3
+urllib3==2.4.0
