@@ -13,15 +13,20 @@ on:
     branches: [ "main" ]
 jobs:
   run-lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
 
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@d1c1ffe0248fe513906c8e24db8ea791d46f8590 # v3.0.3
         id: changes
         with:
           filters: |
@@ -29,7 +34,7 @@ jobs:
               - 'src/**'
       
       - name: Lint Code Base
-        uses: github/super-linter@v4
+        uses: github/super-linter@985ef206aaca4d560cb9ee2af2b42ba44adc1d55 # v4.10.0
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "main"

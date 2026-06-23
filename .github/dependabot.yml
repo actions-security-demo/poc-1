@@ -4,8 +4,25 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
+      include:
+        - '*'
+      exclude:
+        - react
       
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+    groups:
+      dev-dependencies:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        dependency-type: development
+      production-dependencies:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        dependency-type: production
