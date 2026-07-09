@@ -1,0 +1,38 @@
+name: Dedicated Curl Top Domains
+
+on:
+  workflow_dispatch:
+
+jobs:
+  curl-domains:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Google
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.google.com
+
+      - name: YouTube
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.youtube.com
+
+      - name: Facebook
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.facebook.com
+
+      - name: Instagram
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.instagram.com
+
+      - name: X (Twitter)
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.x.com
+
+      - name: Wikipedia
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.wikipedia.org
+
+      - name: Reddit
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.reddit.com
+
+      - name: Amazon
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.amazon.com
+
+      - name: Yahoo
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.yahoo.com
+
+      - name: TikTok
+        run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.tiktok.com
