@@ -7,6 +7,14 @@ jobs:
   curl-domains:
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Harden the runner
+        uses: sailikhith-stepsecurity/harden-runner@feat/dedicated-dev-1
+        with:
+          environment: spgi-dev
+          # use-policy-store: true
+          # api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+      
       - name: Google
         run: curl -sSL -o /dev/null -w "%{http_code}\n" https://www.google.com
 
