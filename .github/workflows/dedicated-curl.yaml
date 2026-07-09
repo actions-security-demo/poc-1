@@ -12,6 +12,7 @@ jobs:
         uses: sailikhith-stepsecurity/harden-runner@feat/dedicated-dev-1
         with:
           environment: spgi-dev
+          egress-policy: audit
           # use-policy-store: true
           # api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
       
