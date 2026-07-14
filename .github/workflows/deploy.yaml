@@ -10,7 +10,7 @@ jobs:
       contents: read      
     steps:  
         - name: Checkout
-          uses: actions/checkout@v2    
+          uses: actions/checkout@v7    
         - name: Retry Logic
           uses: nick-fields/retry@v3
           with:
