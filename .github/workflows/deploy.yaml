@@ -5,14 +5,19 @@ on:
 jobs:
   publish:
     name: Deploy to AWS
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read      
     steps:  
+        - name: Harden the runner (Audit all outbound calls)
+          uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+          with:
+            egress-policy: audit
+
         - name: Checkout
           uses: actions/checkout@v2    
         - name: Retry Logic
-          uses: nick-fields/retry@v3
+          uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
           with:
             timeout_minutes: 10
             max_attempts: 3
